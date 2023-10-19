@@ -5,68 +5,99 @@
   margin-bottom: 20px; /* Adjust this as needed */
 }
 
-h1 {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 4em;
-  color: #333;
-  -webkit-text-shadow: 0 2px 1px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.7);
-  -moz-text-shadow: 0 2px 1px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.7);
-  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.6), 0 0 2px rgba(0, 0, 0, 0.7);
-  word-spacing: 16px;
+html {
+  font-family: Outfit;
+  color: #223C69;
+  background-color: white;
+}
+
+body {
+  padding: 0 !important;
 }
 
 p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #222;
-  text-shadow: 0 0 40px #FFFFFF, 0 0 30px #FFFFFF, 0 0 20px #FFFFFF;
+  color: #67707E;
+}
+
+.background {
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .container {
   position: absolute;
+  left: 0;
   top: 0;
   bottom: 0;
-  width: 100%;
-  background: url('');
-  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.wrapper {
+.container-item {
+  display: flex;
   width: 100%;
-  min-height: 100%;
-  height: auto;
-  display: table;
+  /* max-width: 1800px; */
+  flex-direction: row;
 }
 
 .content {
-  display: table-cell;
-  vertical-align: middle;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px;
 }
 
-.item {
-  width: auto;
-  height: auto;
-  margin: 0 auto;
-  text-align: center;
-  padding: 8px;
+.left-text-container {
+  width: 640px;
+  
+}
+
+.left {
+  width: 50%;
+}
+
+.right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (min-width: 800px) {
   h1 {
-    font-size: 6em;
+    font-size: 3.5em;
+    font-weight: 600;
   }
+  h2 {
+    font-size: 2em;
+    font-weight: 400;
+    }
   p {
-    font-size: 1.6em;
+    font-size: 20px;
+    font-weight: 400;
   }
 }
 
 @media only screen and (max-width: 320px) {
   h1 {
-    font-size: 2em;
+    font-size: 18em;
   }
   p {
     font-size: 1.2em;
+  }
+  .right {
+    display: none !important;
   }
 }

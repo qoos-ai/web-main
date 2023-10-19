@@ -5,24 +5,116 @@
   <meta charset='utf-8'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <title>Qoos</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&family=Outfit:wght@400;600&display=swap"
+    rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 </head>
 
+
 <body>
-  <div class="container">
-    <div class="wrapper">
-      <div class="content">
-        <div class="item">
+  <div class="background">
+    <img src="assets/background.svg" style="height: 130vh" alt="logo" />
+  </div>
+  <div class="container" style="padding-bottom: 0;">
+    <div class="container-item">
+      <div class="content left">
+        <div class="left-text-container">
           <div class="logo">
-            <img src="assets/logo.svg" alt="Logo">
+            <img src="assets/logo.svg" style="width: 200px;" alt="logo" />
           </div>
-          <h1>COMING SOON</h1>
-          <p>This website is under construction.</p>
+          <h1><span style="color: #2BB9CD;">Redefining</span> Enterprise Sales Coaching.</h1>
+          <h2>For Sellers Who Put Buyers First.</h2>
+          <p>Don't miss out on the future of sales. Join the waitlist and get notified when we launch.</p>
+        </div>
+        <form action="https://hbvhawzct9.execute-api.ap-southeast-2.amazonaws.com/dev/qoos/interest" method="POST">
+          <div style="display: flex; flex-direction: row; align-items: row; gap: 4px;">
+
+            <input required type="email" name="email" placeholder="Enter your email address..." style="border-radius: 8px;
+border: 1px solid var(--neutral-border, #DAE0E7);
+background: var(--base-white, #FFF);width: 368px;
+padding: 15px 16px;
+align-items: center;" />
+
+            <button type="submit" style="display: flex;
+padding: 16px 24px;
+justify-content: center;
+align-items: center;
+gap: 8px;border-radius: 8px;
+background: var(--brand-tertiary, #2BB9CD);color: var(--text-invert, #FFF);
+font-family: Outfit;
+font-size: 18px;
+cursor: pointer;
+font-style: normal;
+font-weight: 600;
+line-height: 120%;border:none;">Join the Waitlist</button>
+          </div>
+        </form>
+
+      </div>
+      <div class="content right">
+        <div style="color: var(--brand-secondary, #223C69);
+font-family: Outfit;
+font-size: 36px;
+text-align: center;
+font-style: normal;
+font-weight: 600;
+width: 560px;
+line-height: 120%;
+letter-spacing: -0.1px;">“Built on <span style="color: #E67746">research</span>, supported by <span
+            style="color: #E67746">AI</span>, and designed to <span style="color: #E67746">evolve</span> over time.”
         </div>
       </div>
     </div>
+
   </div>
 </body>
+
+<script>
+  document.querySelector("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Retrieve the button element
+    let submitButton = event.target.querySelector('button[type="submit"]');
+
+    // Save the original button text
+    let originalButtonText = submitButton.innerText;
+
+    // Disable the button and change its text
+    submitButton.disabled = true;
+    submitButton.cursor = "wait";
+    submitButton.innerText = "Submitting...";
+
+    let emailValue = event.target.elements.email.value;
+
+    // Send data using fetch
+    fetch('https://hbvhawzct9.execute-api.ap-southeast-2.amazonaws.com/dev/qoos/interest', {
+      method: 'POST',
+      body: emailValue
+    })
+      .then(response => response.json())  // assuming server responds with json
+      .then(data => {
+        console.log(data);
+        alert('Form submitted successfully');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting the form.');
+      })
+      .finally(() => {
+        submitButton.cursor = "pointer";
+
+        // Re-enable the button and revert its text in both success and error cases
+        submitButton.disabled = false;
+        submitButton.innerText = originalButtonText;
+      });
+  });
+
+
+</script>
+
 
 </html>
